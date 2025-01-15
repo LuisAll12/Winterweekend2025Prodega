@@ -11,9 +11,10 @@ const locations = [
   { lat: 46.778852949190316, lng: 8.387587772193593, title: 'Titlis - Bärghuis Jochpass' },
   { lat: 46.83244972820594, lng: 8.407717451442599, title: 'Brunni - Berglodge Restaurant Ristis' },
   { lat: 46.82151883342263, lng: 8.399498061646392, title: 'Sportingpark' }
+  { lat: 46.83164021119922, lng: 8.43320191049598, title: 'Ende der Welt' }
+  { lat: 46.80474078931307, lng: 8.446212657377915, title: 'Restaurant - Wasserfall' }
 ];
 
-// Karte zentrieren und Zoom-Level einstellen 46.81923962382889, 8.399967692364593
 const mapCenter = { lat: 46.81923962382889, lng: 8.399967692364593 }; // Zürich
 const zoom = 12;
 
