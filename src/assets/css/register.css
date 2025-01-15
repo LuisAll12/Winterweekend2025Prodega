@@ -1,0 +1,91 @@
+/* From Uiverse.io by R1SH4BH81 */ 
+.card {
+    width: auto;
+    height: 300px;
+    padding: 0 15px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    background: #fff;
+    /* border-radius: 20px; */
+  }
+  
+  .card > * {
+    margin: 0;
+  }
+  
+  .card__title {
+    font-size: 23px;
+    font-weight: 900;
+    color: #333;
+  }
+  
+  .card__content {
+    font-size: 13px;
+    line-height: 18px;
+    color: #333;
+    margin: 10px;
+  }
+  
+  .card__form {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  .lower_card__form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .card__form input{
+    outline: 0;
+    margin-left: 10px;
+    background: rgb(255, 255, 255);
+    box-shadow: transparent 0px 0px 0px 1px inset;
+    padding: 0.6em;
+    border-radius: 14px;
+    border: 1px solid #333;
+    color: black;
+    font-size: 14px;
+  }
+  .lower_card__form input{
+    outline: 0;
+    background: rgb(255, 255, 255);
+    box-shadow: transparent 0px 0px 0px 1px inset;
+    padding: 0.6em;
+    border-radius: 14px;
+    border: 1px solid #333;
+    color: black;
+    font-size: 14px;
+  }
+  
+  .card__form button, .lower_card__form button {
+    border: 0;
+    background: #D3001F;
+    color: #fff;
+    padding: 0.68em;
+    border-radius: 14px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .sign-up:hover {
+    opacity: 0.9;
+  }
+  
+.InputsFirstLastName{
+    display: flex;
+    flex-direction: column;
+
+}
+.card__form input::placeholder,
+.lower_card__form input::placeholder {
+    color: #aaa; /* Platzhalter-Farbe */
+    font-size: 14px; /* Schriftgröße des Platzhalters */
+    opacity: 1; /* Sicherstellen, dass Platzhalter sichtbar sind */
+}
+

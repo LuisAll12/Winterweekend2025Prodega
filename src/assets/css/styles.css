@@ -1,0 +1,292 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+    --color-Prodega-Red: #D3001F;
+    --color-Background: #F5F5F5;
+    --color-Background-Grey: #e7e7e7;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: var(--color-Background);
+}
+
+.loader {
+    width: 350px;
+    height: 350px;
+    display: block;
+    margin: auto;
+    position: relative;
+    background: #FFF;
+    box-sizing: border-box;
+  }
+  .loader::after {
+    content: '';
+    width: calc(100% - 30px);
+    height: calc(100% - 15px);
+    top: 15px;
+    left: 15px;
+    position: absolute;
+    background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+     linear-gradient(#DDD 100px, transparent 0),
+     linear-gradient(#DDD 16px, transparent 0),
+     linear-gradient(#DDD 50px, transparent 0);
+    background-repeat: no-repeat;
+    background-size: 75px 175px, 100% 100px, 100% 16px, 100% 30px;
+    background-position: -185px 0, center 0, center 115px, center 142px;
+    box-sizing: border-box;
+    animation: animloader 1s linear infinite;
+  }
+  
+  @keyframes animloader {
+    to {
+      background-position: 185px 0, center 0, center 115px, center 142px;
+    }
+  }
+
+.non-clickable{
+    pointer-events: none;
+    filter: blur(8px);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+.header{
+    background-color: #D3001F;
+    text-align: center;
+    color: #fff;
+}
+.image {
+    width: 100%; /* Container nimmt volle Breite ein */
+    overflow: hidden; /* Option: verhindert Überlauf */
+    position: relative; /* Ermöglicht die Verwendung von absoluter Positionierung für das Kind-Element */
+}
+
+.image img {
+    width: 100%; /* Bild passt sich an die Breite des Containers an */
+    max-width: 100vw; /* Verhindert Überschreitung der Bildschirmbreite */
+    height: auto; /* Beibehaltung des Seitenverhältnisses */
+    display: block; /* Entfernt zusätzlichen Abstand */
+}
+
+.Image-OverlayTitleContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center; /* Horizontal zentrieren */
+  align-items: center;    /* Vertikal zentrieren */
+}
+
+.Image-OverlayTitle {
+  color: white;
+  font-size: 2.5em;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin: 0; /* Entfernt Standard-Margin von Überschriften oder Text */
+}
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Vertikale Zentrierung */
+    flex-direction: column;
+    height: 300px; /* Optional: Höhe festlegen */
+    min-height: 100px; /* Mindesthöhe sicherstellen */
+    margin-top: 50px;
+}
+.Question-Title{
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    color: var(--color-Prodega-Red);
+
+}
+.Answers{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+}
+.Answer{
+    background-color: #e7e7e7;
+    margin: 5px;
+    border-radius: 16px;
+    text-align: center;
+    border: #c1c1c1 solid 2px;
+}
+.SelectedAnswer{
+    transform: scale(1.02);
+    transition: ease-in-out 0.2s;
+    border: #D3001F solid 2px;
+}
+
+.input-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 15px;
+}
+/* From Uiverse.io by Yaya12085 */ 
+.custum-file-upload {
+    height: 200px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    gap: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #000;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 48px 35px -48px rgba(0,0,0,0.1);
+  }
+  
+  .custum-file-upload .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .custum-file-upload .icon svg {
+    height: 80px;
+    fill: #D3001F;
+  }
+  
+  .custum-file-upload .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .custum-file-upload .text span {
+    font-weight: 400;
+    color: #000;
+  }
+  
+  .custum-file-upload input {
+    display: none;
+  }
+
+.Send-Button{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+
+/* From Uiverse.io by KINGFRESS */ 
+button {
+    background-color: transparent;
+    width: 13em;
+    height: 3.3em;
+    border: 2px solid #D3001F;
+    border-radius: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #D3001F;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  button .txt {
+    transition: .4s ease-in-out;
+    position: absolute;
+  }
+  
+  button .txt2 {
+    transform: translateY(1em) scale(0);
+    color: #212121;
+    position: absolute;
+  }
+  
+  button .loader-container {
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    border-radius: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    overflow: hidden;
+  }
+  
+  button .loader-container .loader-button {
+    height: 100%;
+    width: 100%;
+    background-color: #D3001F;
+    border-radius: inherit;
+    transform: translateX(-13em);
+  }
+  
+  button:focus {
+    transition: .4s ease-in-out .4s;
+    animation: scaling 1.5s ease-in-out 0s 1 both;
+  }
+  
+  button:focus .txt {
+    position: absolute;
+    transform: translateY(-5em);
+    transition: .4s ease-in-out;
+  }
+  
+  button:focus .txt2 {
+    transform: translateY(0) scale(1);
+    transition: .3s ease-in-out 1.7s;
+    color: #fff;
+  }
+  
+  button:focus .loader-button {
+    display: block;
+    transform: translate(0);
+    transition: .8s cubic-bezier(0,.4,1,.28) .4s;
+    animation: loading;
+  }
+  
+  @keyframes scaling {
+    20% {
+      height: 1.5em;
+    }
+  
+    80% {
+      height: 1.5em;
+    }
+  
+    100% {
+      height: 3.3em;
+    }
+  }
+
+
+.RegisterComponent{
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+}
+.Map-container{
+  margin-top: 80px;
+  text-align: center;
+}
