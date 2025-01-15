@@ -384,7 +384,10 @@ button {
   background: #D3001F;
   border-radius: 0 4px 0 32px;
 }
-
+.oder{
+  text-align: center;
+  margin: 0;
+}
 .go-arrow {
   margin-top: -4px;
   margin-right: -4px;

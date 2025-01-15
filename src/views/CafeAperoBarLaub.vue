@@ -59,13 +59,19 @@
                     </span>
                 </button>
             </div>
+            <p class="oder">oder</p>
+            <div class="Send-Button" @click="submit()">
+                <button>
+                    <span class="txt">weiter</span>
+                </button>
+            </div>
         </div>
         <div class="Submitloader" v-if="QuestionNumber == 3"></div>
         <div class="CompleteMessage" v-if="QuestionNumber == 4">
             <div class="card">
             <a class="card1" href="#">
                 <p>Frage abgeschlossen</p>
-                <p class="small">Punkte wurden hinzugefügt und Datei erfolgreich hochgeladen.</p>
+                <p class="small">Punkte wurden hinzugefügt<span v-if="!file">und Datei erfolgreich hochgeladen.</span></p>
                 <router-link class="go-corner" to="/">
                     <div class="go-arrow">
                         →
@@ -99,7 +105,7 @@ const apiKey = import.meta.env.VITE_APP_API_KEY;
 const baseId = import.meta.env.VITE_APP_BASE_ID;
 const QuestionNumber = ref(1);
 const base = new Airtable({ apiKey: apiKey }).base(baseId);
-const Points = ref(0);
+const Points = ref(10);
 
 const Q1_SelectedAnswer = ref(0);
 const Q2_SelectedAnswer = ref(0);
@@ -192,14 +198,9 @@ timerFinished.value = true; // Nach 2 Sekunden auf "fertig" setzen
 
 
 async function submit() {
+
 if (!fileInput.value) {
     alert('Datei-Input ist nicht verfügbar.');
-    return;
-}
-
-const file = fileInput.value.files[0];
-if (!file) {
-    alert('Bitte wählen Sie eine Datei aus.');
     return;
 }
 QuestionNumber.value = 3;
@@ -208,8 +209,32 @@ if (!sessionKey || !base) {  // Now 'base' is defined
     alert('Fehlende Sitzung oder Base-Konfiguration.');
     return;
 }
-
-try {
+const file = fileInput.value.files[0];
+if (!file) {
+    //Keine datei vorhanden
+    try{
+        const userRecords = await base("tbleY98skJRVKtQr4").select({
+            filterByFormula: `{SessionKey} = "${sessionKey}"`,
+        }).firstPage();
+        if (userRecords.length === 0) {
+            alert('Benutzer nicht gefunden. Bitte melden Sie sich erneut an.');
+            return;
+        }
+        const userRecord = userRecords[0];
+        const userId = userRecord.id;
+        const currentPoints = userRecord.fields.Points || 0;
+        const newPoints = currentPoints + Points.value;
+        await base("tbleY98skJRVKtQr4").update(userId, {
+            Points: newPoints,
+        });
+        QuestionNumber.value = 4;
+    }catch (error){
+        console.error('Fehler beim Verarbeiten der Anfrage:', error.response?.data || error.message);
+        alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
+    }
+}
+else{
+    try {
     const userRecords = await base("tbleY98skJRVKtQr4").select({
         filterByFormula: `{SessionKey} = "${sessionKey}"`,
     }).firstPage();
@@ -224,7 +249,7 @@ try {
     const currentPoints = userRecord.fields.Points || 0;
 
     // Update points
-    const newPoints = currentPoints + 10;
+    const newPoints = currentPoints + Points.value + 10;
     await base("tbleY98skJRVKtQr4").update(userId, {
         Points: newPoints,
     });
@@ -265,7 +290,7 @@ try {
          throw new Error("Failed to save image");
       }
 
-      QuestionNumber.value = 4;
+        QuestionNumber.value = 4;
     };
     reader.onerror = () => alert('Fehler beim Lesen der Datei.');
     reader.readAsDataURL(file);
@@ -273,6 +298,9 @@ try {
     console.error('Fehler beim Verarbeiten der Anfrage:', error.response?.data || error.message);
     alert('Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
 }
+}
+
+
 }
 
 const splitBase64 = (base64String) => {
