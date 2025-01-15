@@ -8,7 +8,7 @@
     </div>
 
     <div class="image">
-        <img src="../assets/Pictures/sportingpark.jpg" alt="Winterweekend Location" />
+        <img src="../assets/Pictures/SportingPark.jpg" alt="Winterweekend Location" />
         <div class="Image-OverlayTitleContainer">
             <div class="Image-OverlayTitle">
                 Sportingpark
