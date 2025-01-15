@@ -24,11 +24,11 @@ onMounted(() => {
   // Setze den OpenStreetMap Tile Layer
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-  // Konfiguriere das Standard-Icon für Marker
+  // Verwende ein CDN für Leaflet Icons
   const icon = L.icon({
-    iconUrl: '/leaflet-icons/marker-icon.png',
-    iconRetinaUrl: '/leaflet-icons/marker-icon-2x.png',
-    shadowUrl: '/leaflet-icons/marker-shadow.png'
+    iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+    iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
+    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png'
   });
 
   // Füge Marker mit benutzerdefinierten Icons hinzu
@@ -37,6 +37,7 @@ onMounted(() => {
     marker.bindPopup(`<b>${location.title}</b>`).openPopup();
   });
 });
+
 
 </script>
 <template>
