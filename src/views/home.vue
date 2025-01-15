@@ -8,7 +8,7 @@ import Map from '../components/Map.vue';
         </div>
         <div class="programm">
             <br>
-            <h1>Wir wünschen Ihnen einen besonderen Abend im wunderschönen Engelberg</h1>
+            <h1>Wir wünschen Dir ein unvergessliches Wochenende im winterlichen Engelberg.</h1>
         </div>
         <div class="map">
             <Map />
