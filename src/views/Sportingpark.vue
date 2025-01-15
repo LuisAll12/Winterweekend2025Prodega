@@ -60,6 +60,20 @@
                 </button>
             </div>
         </div>
+        <div class="Submitloader" v-if="QuestionNumber == 3"></div>
+        <div class="CompleteMessage" v-if="QuestionNumber == 4">
+            <div class="card">
+            <a class="card1" href="#">
+                <p>Frage abgeschlossen</p>
+                <p class="small">Punkte wurden hinzugefügt und Datei erfolgreich hochgeladen.</p>
+                <router-link class="go-corner" to="/">
+                    <div class="go-arrow">
+                        →
+                    </div>
+                </router-link>
+            </a>
+            </div>
+        </div>
         <span class="loader" 
         v-if="!timerFinished"></span>
     </div>
@@ -188,7 +202,7 @@ if (!file) {
     alert('Bitte wählen Sie eine Datei aus.');
     return;
 }
-
+QuestionNumber.value = 3;
 const sessionKey = getCookie('sessionKey');
 if (!sessionKey || !base) {  // Now 'base' is defined
     alert('Fehlende Sitzung oder Base-Konfiguration.');
@@ -251,7 +265,7 @@ try {
          throw new Error("Failed to save image");
       }
 
-        alert('Punkte wurden hinzugefügt und Datei erfolgreich hochgeladen.');
+      QuestionNumber.value = 4;
     };
     reader.onerror = () => alert('Fehler beim Lesen der Datei.');
     reader.readAsDataURL(file);

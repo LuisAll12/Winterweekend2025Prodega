@@ -8,36 +8,36 @@
     </div>
 
     <div class="image">
-        <img src="../assets/Pictures/Jochpass.jpg" alt="Winterweekend Location" />
+        <img src="../assets/Pictures/Wasserfall.jpg" alt="Winterweekend Location" />
         <div class="Image-OverlayTitleContainer">
             <div class="Image-OverlayTitle">
-                Titlis - Bärghuis Jochpass
+                Restaurant Wasserfall
             </div>
         </div>
     </div>
     <div class="form">
         <div class="Question1" v-if="QuestionNumber == 1">
             <h2 class="Question-Title">
-                Wie hoch liegt das Bärghuis?
+                <br>Welches Bier wird im Wasserfall getrunken?
             </h2>
             <div class="Answers">
                 <div class="Answer Answer1" @click="OnClickAsnwer1(1)" :class="{ 'SelectedAnswer': Q1_SelectedAnswer == 1 }">
-                    <h3 class="Answer-Text">2222 MüM.</h3>
+                    <h3 class="Answer-Text">Appenzeller</h3>
                 </div>
                 <div class="Answer Answer2" @click="OnClickAsnwer1(2)" :class="{ 'SelectedAnswer': Q1_SelectedAnswer == 2 }">
-                    <h3 class="Answer-Text">1999 MüM.</h3>
+                    <h3 class="Answer-Text">Eichhof</h3>
                 </div>
                 <div class="Answer Answer3" @click="OnClickAsnwer1(3)" :class="{ 'SelectedAnswer': Q1_SelectedAnswer == 3 }">
-                    <h3 class="Answer-Text">2555 MüM.</h3>
+                    <h3 class="Answer-Text">Cardinal</h3>
                 </div>
                 <div class="Answer Answer4" @click="OnClickAsnwer1(4)" :class="{ 'SelectedAnswer': Q1_SelectedAnswer == 4 }">
-                    <h3 class="Answer-Text">2000 MüM.</h3>
+                    <h3 class="Answer-Text">Botti</h3>
                 </div>
             </div>
         </div>
         <div class="Question3" v-else-if="QuestionNumber == 2 && timerFinished" >
             <h2 class="Question-Title">
-                <br>Teile deine persönliche Impression von dem Titlis - Bärghuis
+                Teile deine persönliche Impression der Berglodge
             </h2>
             <div class="input-container">
                 <label for="file" class="custum-file-upload">
@@ -79,18 +79,17 @@
     </div>
     <Map />
 </div>
-
 </template>
 
 <script setup>
 import Register from '../components/Register.vue';
+import Map from '../components/Map.vue';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { ref } from 'vue';
 import { onMounted } from 'vue';
 import Airtable from 'airtable';
-import Map from '../components/Map.vue';
-// Initialize Airtable with your API key and base ID
+
 
 const ShowRegister = ref(true)
 
@@ -192,6 +191,7 @@ timerFinished.value = true; // Nach 2 Sekunden auf "fertig" setzen
 
 //Submit Function
 async function submit() {
+
 if (!fileInput.value) {
     alert('Datei-Input ist nicht verfügbar.');
     return;
@@ -265,7 +265,7 @@ try {
          throw new Error("Failed to save image");
       }
 
-      QuestionNumber.value = 4;
+        QuestionNumber.value = 4;
     };
     reader.onerror = () => alert('Fehler beim Lesen der Datei.');
     reader.readAsDataURL(file);
@@ -305,4 +305,5 @@ const splitBase64 = (base64String) => {
 
 <style scoped>
 @import '../assets/css/styles.css';
+
 </style>

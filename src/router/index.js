@@ -9,6 +9,8 @@ const GrandBarSingh  = () => import(/* webpackChunkName: "GrandBarSingh" */ '../
 const Sportingpark  = () => import(/* webpackChunkName: "Sportingpark" */ '../views/Sportingpark.vue');
 const TitlisBaerghuisJochpass  = () => import(/* webpackChunkName: "TitlisBaerghuisJochpass" */ '../views/TitlisBaerghuisJochpass.vue');
 const Admin  = () => import(/* webpackChunkName: "TitlisBaerghuisJochpass" */ '../views/AdminDashboard.vue');
+const EndeDerWelt  = () => import(/* webpackChunkName: "TitlisBaerghuisJochpass" */ '../views/EndeDerWelt.vue');
+const Wasserfall  = () => import(/* webpackChunkName: "TitlisBaerghuisJochpass" */ '../views/Wasserfall.vue');
 
 
 
@@ -57,6 +59,16 @@ const routes = [
         path: '/administrator',
         name: 'administrator',
         component: Admin
+    },
+    {
+        path: '/ende-der-welt',
+        name: 'EndeDerWelt',
+        component: EndeDerWelt
+    },
+    {
+        path: '/wasserfall',
+        name: 'Wasserfall',
+        component: Wasserfall
     },
 ];
 
