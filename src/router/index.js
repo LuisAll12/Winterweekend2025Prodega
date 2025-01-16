@@ -13,7 +13,6 @@ const EndeDerWelt  = () => import(/* webpackChunkName: "TitlisBaerghuisJochpass"
 const Wasserfall  = () => import(/* webpackChunkName: "TitlisBaerghuisJochpass" */ '../views/Wasserfall.vue');
 
 
-
 const routes = [
     {
         path: '/',
