@@ -48,7 +48,7 @@
                 <div class="text">
                     <span>Klicken Sie zum Hochladen eines Bildes</span>
                 </div>
-                <input ref="fileInput" id="file" type="file">
+                <input ref="fileInput" id="file" type="file" @change="handleFileChange" accept="image/png, image/jpeg">
             </label>
             </div>
             <div class="Send-Button" @click="submit()">
@@ -89,34 +89,16 @@
 
 <script setup>
 import Register from '../components/Register.vue';
-import Map from '../components/Map.vue';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { ref } from 'vue';
 import { onMounted } from 'vue';
 import Airtable from 'airtable';
-import heic2any from "heic2any";
+
 
 const convertedImage = ref(null);
 
 // Methode zur Verarbeitung der Datei
-const handleFile = async (event) => {
-  const file = event.target.files[0]; // Ausgewählte Datei
-  if (!file) return;
-
-  try {
-    // HEIC in JPEG konvertieren
-    const convertedBlob = await heic2any({
-      blob: file,
-      toType: "image/jpeg",
-    });
-
-    // Vorschau-URL erstellen
-    convertedImage.value = URL.createObjectURL(convertedBlob);
-  } catch (error) {
-    console.error("Fehler beim Konvertieren der HEIC-Datei:", error);
-  }
-};
 const ShowRegister = ref(true)
 
 const apiKey = import.meta.env.VITE_APP_API_KEY;
@@ -275,9 +257,10 @@ else{
     const userNumber = userRecord.fields.UserId
     // File Upload
     const reader = new FileReader();
+
     reader.onload = async (e) => {
         const base64File = reader.result.split(",")[1];
-        const base64Image = splitBase64(e.target.result)
+        const base64Image = splitBase64(compressedBase64.value)
         const res = await fetch("https://api.airtable.com/v0/appcAiz7ZeW6bn1um/Pictures", {
          method: "POST",
          headers: {
@@ -527,7 +510,75 @@ const splitBase64 = (base64String) => {
 };
 
 
+const handleFileChange = async (event) => {
+   const file = event.target.files[0];
+   if (file) {
+      const base64 = await fileToBase64(file);
+      compressedBase64.value = await compressBase64Image(base64, 1 * 1024 * 1024)
+   }
+};
 
+function fileToBase64(file) {
+   return new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => resolve(reader.result)
+      reader.onerror = (error) => reject(error)
+      reader.readAsDataURL(file)
+   })
+}
+
+
+
+const compressedBase64 = ref(null)
+
+async function compressBase64Image(base64Str, maxFileSizeInBytes) {
+   const imageBlob = base64ToBlob(base64Str)
+   const imageBitmap = await createImageBitmap(imageBlob)
+
+   const canvas = document.createElement("canvas");
+   const ctx = canvas.getContext("2d")
+
+   canvas.width = imageBitmap.width
+   canvas.height = imageBitmap.height
+
+   ctx.drawImage(imageBitmap, 0, 0, canvas.width, canvas.height)
+
+   let quality = 0.9;
+   let compressedBase64;
+
+   do {
+      compressedBase64 = await canvasToBase64(canvas, "image/jpeg", quality)
+
+      quality -= 0.1;
+   } while (compressedBase64.length > maxFileSizeInBytes * 1.33 && quality > 0.1)
+
+   return compressedBase64
+}
+
+// Helper for compressing the image
+function base64ToBlob(base64) {
+   // Überprüfe, ob der Base64-String das "data:"-Präfix enthält
+   const [header, data] = base64.split(",");
+   const byteString = atob(data); // Extrahiert die Base64-codierte Zeichenkette
+   const mimeString = header.split(":")[1].split(";")[0]; // Extrahiert den MIME-Typ
+
+   const arrayBuffer = new Uint8Array(byteString.length);
+
+   // Umwandlung der Base64-Zeichenkette in einen Uint8Array
+   for (let i = 0; i < byteString.length; i++) {
+      arrayBuffer[i] = byteString.charCodeAt(i);
+   }
+
+   // Rückgabe des Blobs mit dem korrekten MIME-Typ
+   return new Blob([arrayBuffer], { type: mimeString });
+}
+
+
+function canvasToBase64(canvas, format, quality) {
+   return new Promise((resolve) => {
+      resolve(canvas.toDataURL(format, quality));
+   });
+}
 </script>
 
 <style scoped>
