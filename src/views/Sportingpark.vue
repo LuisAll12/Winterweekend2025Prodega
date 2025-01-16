@@ -37,6 +37,7 @@
         </div>
         <div class="Question3" v-else-if="QuestionNumber == 2 && timerFinished" >
             <h2 class="Question-Title">
+                <br><br>
                 Teile deine persönliche Impression des Sportingparks
             </h2>
             <div class="input-container">
@@ -83,6 +84,7 @@
         <span class="loader" 
         v-if="!timerFinished"></span>
     </div>
+    <br><br>
     <Map />
 </div>
 

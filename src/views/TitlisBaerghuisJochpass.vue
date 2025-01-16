@@ -83,6 +83,7 @@
         <span class="loader" 
         v-if="!timerFinished"></span>
     </div>
+    <br><br>
     <Map />
 </div>
 
