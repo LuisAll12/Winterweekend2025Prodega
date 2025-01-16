@@ -38,7 +38,7 @@
         <div class="Question3" v-else-if="QuestionNumber == 2 && timerFinished" >
             <h2 class="Question-Title">
                 <br><br><br>
-                Teile deine persönliche Impression der Berglodge
+                Teile deine persönliche Impression vom Restaurant Wasserfall
             </h2>
             <div class="input-container">
                 <label for="file" class="custum-file-upload">
