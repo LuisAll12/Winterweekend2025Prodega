@@ -52,20 +52,14 @@
                 </label>
                 </div>
                 <div class="Send-Button" @click="submit()">
-                    <button>
-                        <span class="txt">Foto senden</span>
-                        <span class="txt2">gesendet!</span>
-                        <span class="loader-container">
-                            <span class="loader-button"></span>
-                        </span>
-                    </button>
-                </div>
-                <p class="oder">oder</p>
-                <div class="Send-Button" @click="submit()">
-                    <button>
-                        <span class="txt">weiter</span>
-                    </button>
-                </div>
+                <button>
+                    <span class="txt">Frage abschliessen</span>
+                    <span class="txt2">gesendet!</span>
+                    <span class="loader-container">
+                        <span class="loader-button"></span>
+                    </span>
+                </button>
+            </div>
             </div>
             <div class="Submitloader" v-if="QuestionNumber == 3"></div>
             <div class="CompleteMessage" v-if="QuestionNumber == 4">

@@ -53,17 +53,11 @@
             </div>
             <div class="Send-Button" @click="submit()">
                 <button>
-                    <span class="txt">Foto senden</span>
+                    <span class="txt">Frage abschliessen</span>
                     <span class="txt2">gesendet!</span>
                     <span class="loader-container">
                         <span class="loader-button"></span>
                     </span>
-                </button>
-            </div>
-            <p class="oder">oder</p>
-            <div class="Send-Button" @click="submit()">
-                <button>
-                    <span class="txt">weiter</span>
                 </button>
             </div>
         </div>
