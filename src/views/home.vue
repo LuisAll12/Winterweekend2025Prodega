@@ -126,9 +126,6 @@ import Map from '../components/Map.vue';
                 </table>
             </div>
         </div>
-        <div class="map">
-            <Map />
-        </div>
     </div>
 </template>
 <style scoped>

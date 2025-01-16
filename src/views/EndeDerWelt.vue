@@ -54,8 +54,8 @@
             </div>
             <div class="Send-Button" @click="submit()">
                 <button>
-                    <span class="txt">submit</span>
-                    <span class="txt2">sent!</span>
+                    <span class="txt">Foto senden</span>
+                    <span class="txt2">gesendet!</span>
                     <span class="loader-container">
                         <span class="loader-button"></span>
                     </span>
@@ -85,8 +85,6 @@
         <span class="loader" 
         v-if="!timerFinished"></span>
     </div>
-    <br><br><br>
-    <Map />
 </div>
 </template>
 
