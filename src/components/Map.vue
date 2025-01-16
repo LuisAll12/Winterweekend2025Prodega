@@ -49,7 +49,8 @@ onMounted(() => {
 </template>
 <style>
 .Map-container{
-  margin-top: 80px;
+  margin-top: 120px;
   text-align: center;
+  
 }
 </style>
