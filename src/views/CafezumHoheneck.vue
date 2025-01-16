@@ -37,7 +37,7 @@
         </div>
         <div class="Question3" v-else-if="QuestionNumber == 2 && timerFinished" >
             <h2 class="Question-Title">
-                <br><br>
+                <br><br><br>
                 Teile deine persönliche Impression des Standortes
             </h2>
             <div class="input-container">

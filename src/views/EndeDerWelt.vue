@@ -37,7 +37,8 @@
         </div>
         <div class="Question3" v-else-if="QuestionNumber == 2 && timerFinished" >
             <h2 class="Question-Title">
-                <br><br>Teile deine persönliche Impression von dem Ende der Welt
+                <br><br><br>
+                Teile deine persönliche Impression von dem Ende der Welt
             </h2>
             <div class="input-container">
                 <label for="file" class="custum-file-upload">
