@@ -75,7 +75,7 @@ import Map from '../components/Map.vue';
                     <tr>
                         <td class="td1">Titlis – Bärghuis Jochpass</td>
                         <td class="td1">Titlis Skigebiet</td>
-                        <td class="td1">?</td>
+                        <td class="td1">Skifahren</td>
                         <td class="insta">
                             <a class="button" href="https://www.titlis.ch/de/restaurants/baerghuis-jochpass">
                                 <span class="span">💻</span>
@@ -85,7 +85,7 @@ import Map from '../components/Map.vue';
                     <tr>
                         <td class="td1">Brunni – Berglodge "Ristis"</td>
                         <td class="td1">Brunni – Ski & Schlittelgebiet</td>
-                        <td class="td1">?</td>
+                        <td class="td1">Schlitteln</td>
                         <td class="insta">
                             <a class="button" href="https://brunni.ch/de/detail/berglodge-restaurant-ristis">
                                 <span class="span">💻</span>
@@ -95,7 +95,7 @@ import Map from '../components/Map.vue';
                     <tr>
                         <td class="td1">Sportingpark</td>
                         <td class="td1">Engelbergerstrasse 11</td>
-                        <td class="td1">?</td>
+                        <td class="td1">Curling, Eisstockschiessen, Schlittschuhlaufen</td>
                         <td class="insta">
                             <a class="button" href="https://sportingpark.ch/">
                                 <span class="span">💻</span>
