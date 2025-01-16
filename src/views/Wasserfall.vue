@@ -93,7 +93,6 @@
 import Register from '../components/Register.vue';
 import Map from '../components/Map.vue';
 import axios from 'axios';
-import { } from '../services/newfields.js'
 import Cookies from 'js-cookie';
 import { ref } from 'vue';
 import { onMounted } from 'vue';
