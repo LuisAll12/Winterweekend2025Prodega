@@ -35,10 +35,10 @@ function generateSessionKey() {
 async function checkEmailInAirtable(email) {
     try {
         const records = await base(tableId).select({
-            filterByFormula: `{Email} = "${email}"`,
+            filterByFormula: `LOWER({Email}) = "${email.toLowerCase()}"`,
         }).firstPage();
 
-        return records.length > 0 ? records[0] : null; // Gibt den Datensatz zurück, falls vorhanden
+        return records.length > 0 ? records[0] : null;
     } catch (error) {
         console.error('Fehler beim Abrufen aus Airtable:', error);
         throw error;

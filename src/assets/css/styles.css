@@ -66,16 +66,16 @@ body {
     color: #fff;
 }
 .image {
-    width: 100%; /* Container nimmt volle Breite ein */
-    overflow: hidden; /* Option: verhindert Überlauf */
-    position: relative; /* Ermöglicht die Verwendung von absoluter Positionierung für das Kind-Element */
+    width: 100%; 
+    overflow: hidden; 
+    position: relative; 
 }
 
 .image img {
-    width: 100%; /* Bild passt sich an die Breite des Containers an */
-    max-width: 100vw; /* Verhindert Überschreitung der Bildschirmbreite */
-    height: auto; /* Beibehaltung des Seitenverhältnisses */
-    display: block; /* Entfernt zusätzlichen Abstand */
+    width: 100%; 
+    max-width: 100vw; 
+    height: auto; 
+    display: block; 
 }
 
 .Image-OverlayTitleContainer {
@@ -85,8 +85,8 @@ body {
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center; /* Horizontal zentrieren */
-  align-items: center;    /* Vertikal zentrieren */
+  justify-content: center; 
+  align-items: center;   
 }
 
 .Image-OverlayTitle {
@@ -96,15 +96,15 @@ body {
   text-align: center;
   text-transform: uppercase;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin: 0; /* Entfernt Standard-Margin von Überschriften oder Text */
+  margin: 0; 
 }
 .form {
     display: flex;
     justify-content: center;
-    align-items: center; /* Vertikale Zentrierung */
+    align-items: center;
     flex-direction: column;
-    height: 300px; /* Optional: Höhe festlegen */
-    min-height: 100px; /* Mindesthöhe sicherstellen */
+    height: 300px; 
+    min-height: 100px; 
     margin-top: 50px;
 }
 .Question-Title{
